@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DriverService } from '../service/driver-service.service';
 
 @Component({
   selector: 'app-explore-container',
@@ -8,7 +9,14 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ExploreContainerComponent implements OnInit {
   @Input() name: string;
 
-  constructor() { }
+  constructor(private driverService: DriverService) {}
+
+
+  clickTest() {
+    this.driverService.test().subscribe((data: any) => {
+      alert(data);
+    });
+  }
 
   ngOnInit() {}
 
